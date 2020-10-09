@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = 'abcdefghijklmnopqrstuvwxyzaskdjljlALKSJDLAJSD';
+
+    for (var i = 65; i <= 122; i++) {
+        var count = 0;
+        for (var j = 0; j < a.length; j++) {
+            var num = a.charCodeAt(j);
+            if (i == num) {
+                count++;
+            }
+        }
+        if (count != 0) {
+            console.log(String.fromCharCode(i) + '------>' + count);
+        }
+    }
+
+
+</script>
+</body>
+</html>

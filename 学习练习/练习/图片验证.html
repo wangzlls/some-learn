@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片验证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .big {
+            width: 600px;
+            height: 600px;
+            background-image: url("素材/花2.jpg");
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .small {
+            width: 235px;
+            height: 204px;
+            background-image: url("素材/花1.png");
+            position: absolute;
+            top: 64px;
+            left: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="big">
+    <div class="small"></div>
+</div>
+<script>
+    //获取页面元素
+    var big = document.querySelector('.big');
+    var small = document.querySelector('.small');
+
+    //设置两个开关，第一个开关：当按下时移动移动，第二个开关：只有移动一次，不能多次点击移动。
+    var flag = false;
+    //当鼠标按下时：
+    var delX = 0;
+    small.onmousedown = function (event) {
+        flag = true;
+        var event = event || window.event;
+        delX = event.clientX - small.offsetLeft;
+        // console.log('event.clientX         '+event.clientX);
+        // console.log('small.offsetLeft         '+small.offsetLeft);
+    };
+
+    //当鼠标移动时：
+    var tempLeft = 0;
+    small.onmousemove = function (event) {
+        if (flag) {
+            var event = event || window.event;
+            tempLeft = event.clientX - delX;
+        }
+        if (tempLeft < 0) {
+            tempLeft = 0;
+        }
+        if (tempLeft > big.clientWidth - small.clientWidth) {
+            tempLeft = big.clientWidth - small.clientWidth;
+        }
+        small.style.left = tempLeft + 'px';
+        // console.log(small.style.left)
+        console.log('event.clientX         '+event.clientX);
+        console.log('small.offsetLeft         '+small.offsetLeft);
+    };
+    //当鼠标抬起时：
+    big.onmouseup = function (event) {
+        if (flag) {
+            flag = false;
+        }
+        if (tempLeft > 184 && tempLeft < 189) {
+            tempLeft = 0;
+            small.style.left = 187 + 'px';
+            alert('成功');
+            small.style.left = 0 + 'px';
+
+        } else {
+            alert('失败');
+            small.style.left = 0 + 'px';
+        }
+
+    }
+
+</script>
+</body>
+</html>

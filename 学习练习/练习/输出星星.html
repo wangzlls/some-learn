@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // for (var i = 0; i < 6; i++) {
+    //     for (j = 0; j <= i; j++) {
+    //         document.write('*')
+    //     }
+    //     document.write('<br>')
+    // }
+
+
+    // for (var h = 0; h < 6; h++) {
+    //     for (s = 5; s >= h; s--) {
+    //         document.write('*')
+    //     }
+    //     document.write('<br>')
+    // }
+
+    //输出菱形
+    // for (h = 1; h <= 6; h++) {
+    //     for (k = 0; k <= 6 - h; k++) {
+    //         document.write('&nbsp;')
+    //     }
+    //     for (s = 1; s <= h; s++) {
+    //         document.write(' *')
+    //     }
+    //     document.write('<br>');
+    // }
+    // for (h = 0; h < 6; h++) {
+    //     for (k = 0; k <= h + 1; k++) {
+    //         document.write('&nbsp;')
+    //     }
+    //     for (s = 0; s <= 4 - h; s++) {
+    //         document.write(' *')
+    //     }
+    //     document.write('<br>')
+    // }
+
+    for (var i = 1; i <= 6; i++) {
+        for (var j = 1; j <= 5; j++) {
+            document.write(j);
+            if (j == 3) {
+                break;
+            }
+        }
+        document.write('<br>')
+    }
+</script>
+
+</body>
+</html>

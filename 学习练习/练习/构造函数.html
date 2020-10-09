@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+<script>
+    //创建类
+    /**
+     * 构造函数：function 类名（属性值）{
+     *  this.属性 = 属性值；
+     *  。。。。。。
+     * }
+     *   1.构造函数可以定义为类：在函数内规定了该类的共有特征（属性）
+     *   2.调用构造函数  使用 new关键字调用
+     *   3.创建构造函数时 注意所有单词的首字母大写
+     */
+    function Person(Name,Age,Sex,Height) {
+        this.Name = Name;
+        this.Age = Age;
+        this.Sex = Sex;
+        this.Height = Height;
+    }
+    var p1 = new Person('李白',2000,'男','180cm');
+    var p2 = new Person('杜甫',2000,'男','180cm');
+    console.log(p1);
+    console.log(p2);
+
+
+</script>
+</body>
+</html>

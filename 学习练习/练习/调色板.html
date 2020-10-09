@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>调色板</title>
+    <style>
+        body {
+            background-color: rgb(200, 200, 200);
+        }
+
+        .box0 {
+            width: 300px;
+            height: 500px;
+            border: 1px solid rgb(255, 255, 255);
+            margin: 0 auto;
+            padding: 10px;
+            position: absolute;
+            top: 10%;
+            left: 40%;
+        }
+
+        .box2 {
+            text-align: center;
+        }
+
+        .box3 {
+            width: 300px;
+            height: 210px;
+            /*border: 1px solid rgb(255, 255, 255);*/
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .rinput, .ginput, .binput {
+            margin: 10px;
+        }
+
+        .rg, .rb, .gb, .rgb {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="box0">
+    <div class="box">
+        <p><span>R：</span>
+            <button class="rsub">-</button>
+            <input type="text" class="rinput" placeholder="200">
+            <button class="radd">+</button>
+        </p>
+        <p><span>G：</span>
+            <button class="gsub">-</button>
+            <input type="text" class="ginput" placeholder="200">
+            <button class="gadd">+</button>
+        </p>
+        <p><span>B：</span>
+            <button class="bsub">-</button>
+            <input type="text" class="binput" placeholder="200">
+            <button class="badd">+</button>
+        </p>
+        <div class="box2">
+            <button class="btn">变颜色</button>
+        </div>
+    </div>
+    <hr>
+    <div class="box3">
+        <div class="rg"><span>R与G同时相加：</span>
+            <button class="rgabtn">+</button>
+        </div>
+        <div class="rg"><span>R与G同时相减：</span>
+            <button class="rgsbtn">-</button>
+        </div>
+        <div class="rb"><span>R与B同时相加：</span>
+            <button class="rbabtn">+</button>
+        </div>
+        <div class="rb"><span>R与B同时相减：</span>
+            <button class="rbsbtn">-</button>
+        </div>
+        <div class="gb"><span>B与G同时相加：</span>
+            <button class="gbabtn">+</button>
+        </div>
+        <div class="gb"><span>B与G同时相减：</span>
+            <button class="gbsbtn">-</button>
+        </div>
+        <div class="rgb"><span>RGB同时相加：</span>
+            <button class="rgbabtn">+</button>
+        </div>
+        <div class="rgb"><span>RGB同时相减：</span>
+            <button class="rgbsbtn">-</button>
+        </div>
+    </div>
+</div>
+<script>
+    //1.获取界面元素
+    var rsub = document.querySelector('.rsub');
+    var rinput = document.querySelector('.rinput');
+    var radd = document.querySelector('.radd');
+
+    var gsub = document.querySelector('.gsub');
+    var ginput = document.querySelector('.ginput');
+    var gadd = document.querySelector('.gadd');
+
+    var bsub = document.querySelector('.bsub');
+    var binput = document.querySelector('.binput');
+    var badd = document.querySelector('.badd');
+
+    var btn = document.querySelector('.btn');
+
+    var rgabtn = document.querySelector('.rgabtn');
+    var rgsbtn = document.querySelector('.rgsbtn');
+    var rbabtn = document.querySelector('.rbabtn');
+    var rbsbtn = document.querySelector('.rbsbtn');
+    var gbabtn = document.querySelector('.gbabtn');
+    var gbsbtn = document.querySelector('.gbsbtn');
+    var rgbabtn = document.querySelector('.rgbabtn');
+    var rgbsbtn = document.querySelector('.rgbsbtn');
+
+    //定义信号量
+    var r = 200;
+    var g = 200;
+    var b = 200;
+    // var time1,time2;
+    // function rSub() {
+    //     r--;
+    //     if (r < 0) {
+    //         r = 0;
+    //     }
+    //     rinput.value = r;
+    //     document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    // }
+    // //绑定事件
+    // rsub.onmousedown = function () {
+    //     //当点击的时候就减
+    //     rSub();
+    //     time1 = setTimeout(function () {
+    //         time2 = setInterval(rSub, 30);//第二次之后每次的延时时间
+    //     }, 150);//第一次执行后的延时时间
+    // };
+    // rsub.onmouseup = rsub.onmouseout = function () {
+    //     clearTimeout(time1);
+    //     clearInterval(time2);
+    // };
+    rsub.onclick = function () {
+        //当点击的时候就减
+        r--;
+        //0.数值校验
+        if (r < 0) {
+            r = 0;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    radd.onclick = function () {
+        //当点击的时候就减
+        r++;
+        //0.数值校验
+        if (r > 255) {
+            r = 255;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    gsub.onclick = function () {
+        //当点击的时候就减
+        g--;
+        //0.数值校验
+        if (g < 0) {
+            g = 0;
+        }
+        //1.输入框的值改变
+        ginput.value = g;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    gadd.onclick = function () {
+        //当点击的时候就减
+        g++;
+        //0.数值校验
+        if (g > 255) {
+            g = 255;
+        }
+        //1.输入框的值改变
+        ginput.value = g;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    bsub.onclick = function () {
+        //当点击的时候就减
+        b--;
+        //0.数值校验
+        if (b < 0) {
+            b = 0;
+        }
+        //1.输入框的值改变
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    badd.onclick = function () {
+        //当点击的时候就减
+        b++;
+        //0.数值校验
+        if (b > 255) {
+            b = 255;
+        }
+        //1.输入框的值改变
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+
+    //设置变颜色按钮改变全局颜色
+    btn.onclick = function () {
+        //获取input输入的值
+        r = rinput.value;
+        g = ginput.value;
+        b = binput.value;
+        if (r < 0) {
+            r = 0;
+        }
+        if (r > 255) {
+            r = 255;
+        }
+        if (g < 0) {
+            g = 0;
+        }
+        if (g > 255) {
+            g = 255;
+        }
+        if (b < 0) {
+            b = 0;
+        }
+        if (b > 255) {
+            b = 255;
+        }
+        rinput.value = r;
+        ginput.value = g;
+        binput.value = b;
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    // ---------------------------以下为两种颜色改变时------------------------------------------
+    rgabtn.onclick = function () {
+        //当点击的时候就减
+        r++;
+        g++;
+        //0.数值校验
+        if (r > 255) {
+            r = 255;
+        }
+        if (g > 255) {
+            g = 255;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        ginput.value = g;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    rgsbtn.onclick = function () {
+        //当点击的时候就减
+        r--;
+        g--;
+        //0.数值校验
+        if (r < 0 ) {
+            r = 0;
+        }
+        if (g < 0 ) {
+            g = 0;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        ginput.value = g;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    rbabtn.onclick = function () {
+        //当点击的时候就减
+        r++;
+        b++;
+        //0.数值校验
+        if (r > 255) {
+            r = 255;
+        }
+        if (b > 255) {
+            b = 255;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    rbsbtn.onclick = function () {
+        //当点击的时候就减
+        r--;
+        b--;
+        //0.数值校验
+        if (r < 0 ) {
+            r = 0;
+        }
+        if (b < 0 ) {
+            b = 0;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    gbabtn.onclick = function () {
+        //当点击的时候就减
+        g++;
+        b++;
+        //0.数值校验
+        if (g > 255) {
+            g = 255;
+        }
+        if (b > 255) {
+            b = 255;
+        }
+        //1.输入框的值改变
+        ginput.value = g;
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    gbsbtn.onclick = function () {
+        //当点击的时候就减
+        g--;
+        b--;
+        //0.数值校验
+        if (g < 0 ) {
+            g = 0;
+        }
+        if (b < 0 ) {
+            b = 0;
+        }
+        //1.输入框的值改变
+        ginput.value = g;
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    rgbabtn.onclick = function () {
+        //当点击的时候就减
+        r++;
+        g++;
+        b++;
+        //0.数值校验
+        if (r > 255) {
+            r = 255;
+        }
+        if (g > 255) {
+            g = 255;
+        }
+        if (b > 255) {
+            b = 255;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        ginput.value = g;
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    rgbsbtn.onclick = function () {
+        //当点击的时候就减
+        r--;
+        g--;
+        b--;
+        //0.数值校验
+        if (r < 0 ) {
+            r = 0;
+        }
+        if (g < 0 ) {
+            g = 0;
+        }
+        if (b < 0 ) {
+            b = 0;
+        }
+        //1.输入框的值改变
+        rinput.value = r;
+        ginput.value = g;
+        binput.value = b;
+        //2.设置背景颜色改变
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+
+</script>
+</body>
+</html>

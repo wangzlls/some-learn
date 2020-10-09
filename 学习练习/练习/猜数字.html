@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--随机数-->
+<!--Math.random() [0,1)-->
+<!--n:较大的范围  10  93-->
+<!--m:较小的范围  1   22-->
+<!--(Math.random()*(n-m+1)+m)-->
+<!--1~10000-->
+<!--50 小了-->
+<!--50 ~10000   999大了-->
+<!--50~999   666 小了-->
+<!--666~999-->
+<!--888 大奖-->
+<!--*/-->
+
+<script>
+    var LuckNum = Math.floor((Math.random() * 10000) + 1);
+    console.log(LuckNum);
+    var maxNum = 10000;
+    var minNum = 1;
+    var caiNum = 0;
+    var count = 0;
+    var quit = 'q';
+    while (true) {
+        count++;
+        //弹窗无限次弹出，所以在循环内
+        caiNum = prompt('请输入一个数字：');
+        //将猜测的值与幸运数字进行比较
+        //当猜测数字大于幸运数字时：
+        if (caiNum === quit) {
+            break;
+        } else if (caiNum > maxNum || caiNum < minNum) {
+            alert('输入的数字不在范围内，重新来。\n范围是：' + minNum + '------>' + maxNum)
+        } else if (caiNum > LuckNum) {
+            maxNum = caiNum;
+            alert('朋友，猜大了，范围是：' + minNum + '------>' + maxNum)
+        }
+        //当猜测数字小于幸运数字时：
+        else if (caiNum < LuckNum) {
+            minNum = caiNum;
+            alert('朋友，猜小了，范围是：' + minNum + '------>' + maxNum);
+        }
+        //当猜测数字等于幸运数字时：
+        else if (caiNum == LuckNum) {
+            alert('恭喜猜测正确！一共猜了' + count + '次');
+            break;
+        }
+    }
+    console.log('程序结束！')
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检测体脂率</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            width: 1000px;
+            height: 700px;
+            margin: auto;
+            padding: 10px;
+            top: 50%;
+        }
+
+        .div0 {
+            /*top: 30%;*/
+            margin: 60px auto;
+
+        }
+
+        .div1 {
+            width: 300px;
+            height: 150px;
+            border: 8px solid pink;
+            float: left;
+            margin: 40px auto;
+            padding: 50px;
+            top: 50%;
+        }
+
+        .div2 {
+            color: aliceblue;
+            width: 300px;
+            height: 150px;
+            border: 8px solid hotpink;
+            float: right;
+            margin: 40px auto;
+            padding: 50px;
+            top: 50%;
+        }
+
+        .div3 {
+            width: 900px;
+            height: 350px;
+            margin: 30px auto;
+            padding: 5px 5px;
+        }
+
+        span {
+            margin: 20px;
+            font-size: 21px;
+            color: aliceblue;
+        }
+
+        input {
+            border: 2px solid yellow;
+            font-size: 15px;
+            outline: 3px red;
+        }
+
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+            z-index: -1;
+        }
+
+        source {
+            min-height: 100%;
+            min-width: 100%;
+            height: auto;
+            width: auto;
+        }
+
+        h1 {
+            margin: 0 auto;
+            color: yellow;
+            text-align: center;
+            font-family: KaiTi, serif;
+            font-size: 60px;
+        }
+
+        h2 {
+            margin: 5px auto;
+            font-family: KaiTi, serif;
+            color: yellow;
+            text-align: center;
+        }
+
+        .img {
+            margin: 1px auto;
+            text-align: center;
+        }
+
+        #bmi {
+            margin: 50px 120px 80px 100px;
+            font-size: 30px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<video id="v1" preload="auto" autoplay loop muted>
+    <source src="./素材/bg.mp4" type="video/mp4"/>
+</video>
+<div class="header">
+    <div class="div0">
+        <h1>免费测身体质量指数</h1>
+    </div>
+    <div class="div3">
+        <div class="div1">
+            <span>姓名：</span><input type="text" id="userName"><br>
+            <span>身高：</span><input type="text" id="userHeight" placeholder="输入身高，单位cm"><br>
+            <span>体重：</span><input type="text" id="userWeight" placeholder="输入体重，单位kg"><br>
+            <button id="bmi">检测</button>
+        </div>
+        <div class="div2" id="div2">
+        </div>
+    </div>
+    <div class="div4">
+        <div class="img">
+            <img src="./素材/123.png" alt="微信二维码" width="150x" height="150px">
+        </div>
+        <h2>免费加微信</h2>
+    </div>
+
+</div>
+
+<script>
+    var userNameInput = document.getElementById('userName');
+    var userWeightInput = document.getElementById('userWeight');
+    var userHeightInput = document.getElementById('userHeight');
+    var bmibtn = document.getElementById('bmi');
+    var div2 = document.getElementById('div2');
+
+
+    bmibtn.onclick = function () {
+
+        var userName = userNameInput.value;
+        var userWeight = userWeightInput.value;
+        var userHeight = userHeightInput.value;
+        var BMI = userWeight / ((userHeight / 100) ^ 2);
+        BMI = BMI.toFixed(1);
+        console.log(userName, userWeight, userHeight, BMI);
+        var result = '';
+        if (BMI <= 18.4) {
+            result = '偏瘦，建议多吃';
+        } else if (BMI >= 18.5 && BMI <= 23.9) {
+            result = '正常，建议保持';
+        } else if (BMI >= 24.0 && BMI <= 27.9) {
+            result = '偏重，建议少吃';
+        } else if (BMI >= 28.4) {
+            result = '肥胖，建议减肥';
+        }
+        div2.innerHTML = '你好，' + userName + '<br/>' + '你的身高是：' + userHeight + 'cm' + "<br/>" + '你的体重是：' + userWeight + 'kg'
+            + '<br/>' + '你的身体质量指数(BMI)是：' + BMI + '<br/>' + '综合结果为：' + result;
+    }
+</script>
+</body>
+</html>

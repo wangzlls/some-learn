@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>注册用户</title>
+</head>
+<body>
+<script>
+    /**
+     编写一个能够注册新用户的模块。要求：
+     (1)用户 账户名不超过20位，但不少于10位。 并且[首字母必须是字母]。违规后提示用户。
+     (2)用户密码不超过16位，但不少于6位。并且密码中[必须包含字母]。违规后提示用户。
+     */
+    var userName = 'wangzlls123';
+    var passWord = 'wangzlls123';
+
+    var firstCode = userName.charCodeAt(0);
+
+    //ascii:A-Z:65-90   a-z:97-122
+    if ((userName.length >= 10 && userName.length <= 20) && ((firstCode >= 65 && firstCode <= 90) || (firstCode >= 97 && firstCode <= 122))) {
+        //执行上面后，用户名已经合法，此时校验密码
+        if (passWord.length >= 6 && passWord.length <= 16) {
+            var flag = false;
+            for (var i = 0; i < passWord.length; i++) {
+                var code = passWord.charCodeAt(i);
+                if (code >= 65 && code <= 90 || code >= 97 && code <= 122) {
+                    flag = true;
+                    break;
+            }
+        }
+         if (flag) {
+             alert('密码设置成功')
+         }else {
+             alert('密码设置错误,不含有英文')
+         }
+        } else if (passWord.length < 6) {
+            alert('密码过短')
+        } else if (passWord.length > 16) {
+            alert('密码过长')
+        }
+
+    alert('用户名设置成功')
+    } else if (userName.length < 10) {
+        alert('用户名设置过短')
+    } else if (userName.length > 20) {
+        alert('用户名设置过长')
+    } else {
+        alert('首字母不是英文')
+    }
+    console.log('程序结束')
+
+</script>
+</body>
+</html>

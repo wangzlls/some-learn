@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数据解析</title>
+</head>
+<body>
+<form action="#" method="get">
+    <span>姓名：</span><input type="text" name="userName" class="userName"/><br>
+    <span>年龄：</span><input type="text" name="userAge" class="userAge"/><br>
+    <span>性别：</span><input type="text" name="userSex" class="userSex"/><br>
+    <span>身高：</span><input type="text" name="userHeight" class="userHeight"/><br>
+    <input type="submit">
+</form>
+<button class="getMes">获取信息</button>
+<script>
+    var get = document.querySelector('.getMes');
+    // console.log(get);
+    get.onclick = function () {
+        var result = document.location.search;
+        var obj = getMessage(result);
+        console.log(obj)
+    };
+
+    function getMessage(seachValue) {
+        // console.log(result);
+        var r1 = seachValue.substring(1);
+        // console.log(r1);
+        var r2 = r1.split('&');
+        // console.log(r2);
+        var obj = {};
+        for (var i = 0; i < r2.length; i++) {
+            var r3 = r2[i].split('=');
+            console.log(r3);
+            obj[r3[0]] = r3[1]
+        }
+        return obj;
+    }
+
+
+</script>
+</body>
+</html>

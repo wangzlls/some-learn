@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户提交注册</title>
+    <style>
+        .div {
+            height: 300px;
+            width: 500px;
+            margin: 20px auto;
+            border: 1px solid lightpink;
+            /*text-align: center;*/
+            padding: 20px;
+        }
+
+        .checkdiv {
+            width: 150px;
+            height: 50px;
+            background-color: aqua;
+            margin: 5px auto;
+            text-align: center;
+            font-size: 37px;
+        }
+
+        .div2 {
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        .redBorder {
+            border: 3px solid red;
+        }
+
+        .redSpan {
+            color: red;
+        }
+
+        .greenBorder {
+            border: 3px solid green;
+        }
+
+        .greenSpan {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="div">
+    <p>
+        <span>姓名：</span><input type="text" class="userNameInput">&nbsp;<span class="userNameSpan"></span>
+    </p>
+    <p>
+        <span>电话：</span><input type="text" class="phoneInput">&nbsp;<span class="phoneSpan"></span>
+    </p>
+    <p>
+        <span>验证码：</span><input type="text" class="checkCodeInput">&nbsp;<span class="checkCodeSpan"></span>
+    </p>
+    <div class="checkdiv"></div>
+    <div class="div2">
+        <button class="btn" disabled="disabled">提交</button>
+    </div>
+</div>
+<script>
+    var userNameInput = document.querySelector('.userNameInput');
+    var userNameSpan = document.querySelector('.userNameSpan');
+
+    var phoneInput = document.querySelector('.phoneInput');
+    var phoneSpan = document.querySelector('.phoneSpan');
+
+    var checkCodeInput = document.querySelector('.checkCodeInput');
+    var checkCodeSpan = document.querySelector('.checkCodeSpan');
+
+    var btn = document.querySelector('.btn');
+
+    var checkdiv = document.querySelector('.checkdiv');
+
+
+    //生成验证码
+    function getCode(num) {
+        var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var result = '';
+        for (var i = 0; i < num; i++) {
+            result += str[Math.floor(Math.random() * (str.length))];
+        }
+        console.log(result);
+        return result
+    }
+
+    //当页面加载时出现验证码
+    window.onload = function () {
+        checkdiv.innerHTML = getCode(4);
+    };
+    checkdiv.onclick = function () {
+        checkdiv.innerHTML = getCode(4);
+    };
+
+    //失去焦点事件检测
+
+    userNameInput.onblur = function () {
+        if (userNameInput.value.length >= 2 && userNameInput.value.length <= 7) {
+            userNameInput.setAttribute('class', 'greenBorder');
+            userNameSpan.innerHTML = '输入正确';
+            userNameSpan.setAttribute('class', 'greenSpan');
+            checkSuccess()
+        } else {
+            userNameInput.setAttribute('class', 'redBorder');
+            userNameSpan.innerHTML = '输入错误';
+            userNameSpan.setAttribute('class', 'redSpan');
+            checkSuccess()
+        }
+    };
+    //-----------------------------------------------------------------
+    phoneInput.onblur = function () {
+        if (phoneInput.value.length == 11) {
+            phoneInput.setAttribute('class', 'greenBorder');
+            phoneSpan.innerHTML = '输入正确';
+            phoneSpan.setAttribute('class', 'greenSpan');
+            checkSuccess()
+        } else {
+            phoneInput.setAttribute('class', 'redBorder');
+            phoneSpan.innerHTML = '输入错误';
+            phoneSpan.setAttribute('class', 'redSpan');
+            checkSuccess()
+        }
+    };
+    //--------------------------------------------------------------------
+    checkCodeInput.onblur = function () {
+        if (checkCodeInput.value.toUpperCase() == checkdiv.innerHTML.toUpperCase()) {
+            checkCodeInput.setAttribute('class', 'greenBorder');
+            checkCodeSpan.innerHTML = '输入正确';
+            checkCodeSpan.setAttribute('class', 'greenSpan');
+            checkSuccess()
+        } else {
+            checkCodeInput.setAttribute('class', 'redBorder');
+            checkCodeSpan.innerHTML = '输入错误';
+            checkCodeSpan.setAttribute('class', 'redSpan');
+            checkSuccess()
+        }
+    };
+
+    function checkSuccess() {
+        if (userNameSpan.innerHTML == '输入正确' && phoneSpan.innerHTML == '输入正确' && checkCodeSpan.innerHTML == '输入正确') {
+            btn.removeAttribute('disabled');
+            btn.onclick = function () {
+                alert('成功')
+            }
+        }else {
+            btn.setAttribute('disabled','disabled')
+        }
+    }
+
+
+</script>
+</body>
+</html>

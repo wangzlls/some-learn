@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>一二三四五六七八九十</title>
+</head>
+<body>
+<script>
+    //解法一：
+    // var title = document.title;
+    // var titleArr = title.split('');
+    // setInterval(function () {
+    //     //将第一个元素删除，并且获取到
+    //     var first = titleArr.shift();
+    //     //将获取到的第一个元素添加到后面
+    //     titleArr.push(first);
+    //     console.log(titleArr);
+    //     document.title = titleArr.join(' ')
+    // },500);
+
+    //解法二：
+    setInterval(function () {
+        var title = document.title;
+        var first = title.charAt(0);
+        var other = title.substring(1);
+        console.log(other);
+        var result = other+first;
+        console.log(result);
+        document.title = result;
+    },500000)
+
+
+</script>
+</body>
+</html>

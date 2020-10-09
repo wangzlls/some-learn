@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>慢速回到顶部</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+<button class="btn">回到顶部</button>
+<script>
+    var btn = document.querySelector('.btn');
+
+    btn.onclick = function () {
+        var tempTop = document.documentElement.scrollTop;
+        var timer = setInterval(function () {
+            tempTop -= 20;
+            console.log(tempTop);
+            if (tempTop < 0) {
+                clearInterval(timer);
+            }
+            document.documentElement.scrollTop = tempTop;
+            document.body.scrollTop = tempTop;
+        }, 50)
+
+    }
+
+</script>
+</body>
+</html>

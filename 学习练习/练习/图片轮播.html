@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .box {
+            width: 672px;
+            height: 320px;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .imgs {
+            position: relative;
+            width: 672px;
+            height: 320px;
+        }
+
+        .box .imgs li {
+            position: absolute;
+            display: none;
+        }
+
+        .box .imgs li.select {
+            display: block;
+        }
+
+        .btns span {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            top: 137.5px;
+        }
+
+        .btns .left {
+            left: 10px;
+            background-image: url("素材/slide-btnL.png");
+        }
+
+        .btns .right {
+            right: 10px;
+            background-image: url("素材/slide-btnR.png");
+        }
+
+        .circles {
+            position: absolute;
+            bottom: 5px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .circles li {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            background-color: lightpink;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .circles li.select {
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="imgs">
+        <ul>
+            <li class="select"><a href="#"><img src="素材/aaa.jpg" alt=""></a></li>
+            <li><a href="#"><img src="素材/bbb.jpg" alt=""></a></li>
+            <li><a href="#"><img src="素材/ccc.jpg" alt=""></a></li>
+            <li><a href="#"><img src="素材/ddd.jpg" alt=""></a></li>
+            <li><a href="#"><img src="素材/eee.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <div class="btns">
+        <span class="left"></span>
+        <span class="right"></span>
+    </div>
+    <div class="circles">
+        <ul>
+            <li class="select"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script>
+    //获取页面元素
+    var imgLis = document.querySelectorAll('.imgs li');
+    var circlesLis = document.querySelectorAll('.circles li');
+    var btnLeft = document.querySelector('.left');
+    var btnRight = document.querySelector('.right');
+    // console.log(imgLis,circlesLis,btnLeft,btnRight)
+    //设置第0个元素的下标；
+    var ids = 0;
+    //对按钮绑定事件
+    btnLeft.onclick = function () {
+        ids--;
+        changeStyle();
+    };
+    btnRight.onclick = function () {
+        ids++;
+        changeStyle();
+    };
+    //当鼠标在下面的circle时，实现图片跳转;
+    //对li进行事件绑定。
+    for (var j = 0; j < circlesLis.length; j++) {
+        circlesLis[j].index = j;
+        circlesLis[j].onmouseover = function () {
+            ids = this.index;
+            changeStyle();
+        }
+    }
+
+    //设置定时播放
+    var timer = setInterval(function () {
+        ids++;
+        changeStyle();
+    },2000);
+
+    function changeStyle() {
+        if (ids > 4) {
+            ids = 0;
+        }
+        if (ids < 0) {
+            ids = 4;
+        }
+        //清除所有的样式，如果不是设置，当鼠标点完一轮后，所有图片的属性都会加一个select，不能实现轮播
+        for (var i = 0; i < imgLis.length; i++) {
+            imgLis[i].className = '';
+            circlesLis[i].className = '';
+        }
+        imgLis[ids].className = 'select';
+        circlesLis[ids].className = 'select';
+    }
+</script>
+</body>
+</html>

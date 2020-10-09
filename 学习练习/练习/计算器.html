@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算机</title>
+</head>
+<body>
+<span>num1</span><input type="text" id="num1">
+<span>num2</span><input type="text" id="num2"><br>
+<button id="jia">+</button>
+<button id="jian">-</button>
+<button id="cheng">*</button>
+<button id="chu">/</button>
+<br>
+<span>结果</span><input type="text" id="result">
+<script>
+    var num1Input = document.getElementById('num1');
+    var num2Input = document.getElementById('num2');
+    var jiaBtn = document.getElementById('jia');
+    var jianBtn = document.getElementById('jian');
+    var chengBtn = document.getElementById('cheng');
+    var chuBtn = document.getElementById('chu');
+    var resultInput = document.getElementById('result');
+
+    // 给点击一个事件
+    jiaBtn.onclick = function () {
+        var num1 = parseInt(num1Input.value);
+        var num2 = parseInt(num2Input.value);
+        resultInput.value = num1 + num2
+    };
+    jianBtn.onclick = function () {
+        var num1 = parseInt(num1Input.value);
+        var num2 = parseInt(num2Input.value);
+        resultInput.value = num1 - num2
+    };
+    chengBtn.onclick = function () {
+        var num1 = parseInt(num1Input.value);
+        var num2 = parseInt(num2Input.value);
+        resultInput.value = num1 * num2
+    };
+    chuBtn.onclick = function () {
+        var num1 = parseInt(num1Input.value);
+        var num2 = parseInt(num2Input.value);
+        resultInput.value = num1 / num2
+    }
+</script>
+
+
+</body>
+</html>

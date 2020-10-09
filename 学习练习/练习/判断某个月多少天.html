@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断某个月多少天</title>
+    <style>
+        .div1 {
+            width: 350px;
+            /*margin: 0 auto;*/
+            border: 1px solid red;
+            text-align: center;
+        }
+
+        .div2 {
+            width: 350px;
+            margin: 20px 0;
+            /*border: 1px solid red;*/
+            text-align: center;
+        }
+
+        .div3 {
+            width: 350px;
+            margin: 20px 0;
+            border: 1px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="div1">
+    <span id="year">输入年份：</span><input type="text" id="years"><br>
+    <span id="mon">输入月份：</span><input type="text" id="mons">
+</div>
+<div class="div2">
+    <button class="btn" id="btn">计算</button>
+</div>
+<div class="div3">
+    <span id="day">这个月有：</span><input type="text" id="days">
+</div>
+<script>
+    var year = document.getElementById('years');
+    var mon = document.getElementById('mons');
+    var btn = document.getElementById('btn');
+    var result = document.getElementById('days');
+
+    btn.onclick = function () {
+        var years = parseInt(year.value);
+        var mons = parseInt(mon.value);
+
+        switch (mons) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 10:
+            case 12:
+                result.value = 31;
+                console.log(31);
+                break;
+            // case 4:
+            // case 6:
+            // case 9:
+            // case 11:
+            //     result.value = 30;
+            //     break;
+            case 2:
+                if (years % 4 === 0 && years % 100 !== 0 || years % 400 === 0) {
+                    result.value = 29;
+                    break;
+                } else {
+                    result.value = 28;
+                    break;
+                }
+            default:
+                result.value = 30;
+                break;
+        }
+    };
+    // console.log('123')
+    // var year = parseInt(prompt('请您输入一个年份', 2018));
+    // var mouth = parseInt(prompt('请您输入一个月份', 2));
+    //
+    // switch (mouth) {
+    //     case 1:
+    //     case 5:
+    //     case 7:
+    //     case 3:
+    //     case 8:
+    //     case 10:
+    //     case 12:
+    //         console.log(31);
+    //         break;
+    //     case 4:
+    //     case 6:
+    //     case 9:
+    //     case 11:
+    //         console.log(30);
+    //         break;
+    //     case 2:
+    //         if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+    //             console.log(29);
+    //         } else {
+    //             console.log(28);
+    //         }
+    //         break;
+    // }
+    // console.log('Game Over!!!');
+
+</script>
+</body>
+</html>

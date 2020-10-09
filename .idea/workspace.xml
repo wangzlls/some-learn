@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cc12ce4c-65ae-4b67-856b-d18cf1c18fb6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ezAnDLKdCgA9mvAGgmxU3W60hP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\webstorm\学习练习\练习\素材" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\webstorm\学习练习\练习" />
+      <recent name="E:\webstorm\学习练习\练习\素材" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cc12ce4c-65ae-4b67-856b-d18cf1c18fb6" name="Default Changelist" comment="" />
+      <created>1595314212291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595314212291</updated>
+      <workItem from="1595314213571" duration="61000" />
+      <workItem from="1595314275840" duration="2199000" />
+      <workItem from="1595381755512" duration="3292000" />
+      <workItem from="1595397783834" duration="599000" />
+      <workItem from="1595654562810" duration="240000" />
+      <workItem from="1595654900282" duration="20564000" />
+      <workItem from="1595726853244" duration="6539000" />
+      <workItem from="1595743402106" duration="9609000" />
+      <workItem from="1595773137141" duration="495000" />
+      <workItem from="1595814236457" duration="4337000" />
+      <workItem from="1595827822596" duration="1278000" />
+      <workItem from="1595849819335" duration="4267000" />
+      <workItem from="1595854956471" duration="800000" />
+      <workItem from="1595855826553" duration="1317000" />
+      <workItem from="1595857846325" duration="63000" />
+      <workItem from="1595899955382" duration="13314000" />
+      <workItem from="1595984172283" duration="2079000" />
+      <workItem from="1596072389733" duration="2052000" />
+      <workItem from="1596089947257" duration="7839000" />
+      <workItem from="1596175044281" duration="1255000" />
+      <workItem from="1596185735005" duration="633000" />
+      <workItem from="1596250960842" duration="3035000" />
+      <workItem from="1596290642618" duration="66000" />
+      <workItem from="1597299276690" duration="2002000" />
+      <workItem from="1597883229258" duration="4792000" />
+      <workItem from="1597901030771" duration="1904000" />
+      <workItem from="1599449907092" duration="147000" />
+      <workItem from="1599450072599" duration="5142000" />
+      <workItem from="1599471102449" duration="9501000" />
+      <workItem from="1599526221794" duration="1476000" />
+      <workItem from="1599608658740" duration="1530000" />
+      <workItem from="1600430833917" duration="617000" />
+      <workItem from="1600432087820" duration="45000" />
+      <workItem from="1600733066274" duration="2006000" />
+      <workItem from="1600920829101" duration="210000" />
+      <workItem from="1600993288331" duration="19000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="262" key="FileChooserDialogImpl" timestamp="1600993304138">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="734" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600993304138" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1600733142599">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600733142599" />
+    <state x="310" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1600734772753">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="310" y="248" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600734772753" />
+  </component>
+</project>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义右键菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        textarea {
+            margin: 50px auto;
+        }
+
+        ul {
+            list-style: none;
+            position: absolute;
+            display: none;
+            height: 40px;
+            width: 100px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        li {
+            /*height: 40px;*/
+            /*line-height: 40px;*/
+            background-color: lightpink;
+            /*width: 100px;*/
+            color: salmon;
+        }
+
+        li:hover {
+            background-color: beige;
+        }
+
+    </style>
+</head>
+<body>
+<textarea name="" id="" cols="30" rows="10">asdasdadasdasdasdad</textarea>
+<ul>
+    <li>赶快输入</li>
+    <li>百度搜索</li>
+    <li>输入搜索</li>
+    <li>离开页面</li>
+</ul>
+<button onclick="test()">按钮</button>
+<script>
+    var ul = document.querySelector('ul');
+
+    //禁止系统右键菜单
+    document.oncontextmenu = function (event) {
+        return false;
+    };
+    // console.log(document.body)
+    //当鼠标右键按下的时候 将菜单展示出来
+    document.onmousedown = function (event) {
+        var event = event || window.event;
+        if (event.button == 2) {
+            ul.style.left = event.clientX + 'px';
+            ul.style.top = event.clientY + 'px';
+            ul.style.display = 'block'
+        } else {
+            ul.style.display = 'none';
+        }
+    };
+    //使用事件委托来处理事件
+    // ul.onmousedown = function (event) {
+    //     var event = event || window.event;
+    //     // console.log('2222222');
+    //     if (event.target.innerHTML == '赶快输入') {
+    //         alert('不说话，发红包！！！');
+    //     } else if (event.target.innerHTML == '百度搜索') {
+    //         var result = document.getSelection().toString();
+    //         window.open('http://www.baidu.com/s?wd=' + result);
+    //     } else if (event.target.innerHTML == '输入搜索') {
+    //         var str = window.prompt('输入要搜索的内容：', '');
+    //         window.open('http://www.baidu.com/s?wd=' + str);
+    //     } else if (event.target.innerHTML == '离开页面') {
+    //         var result = window.confirm('真的要离开吗？');
+    //         if (result) {
+    //             window.close();
+    //         }
+    //     }
+    // }
+    // var txt = document.querySelector('textarea');
+    // txt.focus();
+    // var start = txt.selectionStart.toString();
+    // var end = txt.selectionEnd.toString();
+    // var ss = txt.value.substring(start, end);
+
+    var txt = document.querySelector('textarea');
+    // function test() {
+    //     txt.focus();
+    //     var start = txt.selectionStart.toString();
+    //     var end = txt.selectionEnd.toString();
+    //     var ss = txt.value.substring(start, end);
+    //     console.log(start,end,ss);
+    // }
+    ul.onmousedown = function (event) {
+        var event = event || window.event;
+        // console.log('2222222');
+        switch (event.target.innerHTML) {
+            case '赶快输入' :
+                alert('不说话，发红包！！！');
+                break;
+            case '百度搜索':
+                var result = document.getSelection().toString();
+                window.open('http://www.baidu.com/s?wd=' + result);
+                break;
+            case '输入搜索':
+                var str = window.prompt('输入要搜索的内容：', '');
+                console.log(txt.value);
+                window.open('http://www.baidu.com/s?wd=' + str);
+                break;
+            case '离开页面':
+                var result1 = window.confirm('真的要离开吗？');
+                    if (result1) {
+                        window.close();
+                    }
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 672px;
+      height: 320px;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .imgs ul {
+      list-style: none;
+    }
+
+    .imgs li {
+      position: absolute;
+      display: none;
+    }
+
+    .imgs .select {
+      display: block;
+    }
+
+    .btns span {
+      width: 55px;
+      height: 55px;
+      position: absolute;
+      top: 40%;
+      background-color: red;
+    }
+
+    .btns .left {
+      left: 10px;
+      background: url("素材/slide-btnL.png");
+    }
+
+    .btns .right {
+      right: 10px;
+      background: url("素材/slide-btnR.png");
+    }
+
+    .circles {
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .circles li {
+      list-style: none;
+      width: 15px;
+      height: 15px;
+      background-color: greenyellow;
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .circles .select {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="imgs">
+    <ul>
+      <li class="select"><a href="#"><img src="素材/aaa.jpg" alt=""></a></li>
+      <li><a href="#"><img src="素材/bbb.jpg" alt=""></a></li>
+      <li><a href="#"><img src="素材/ccc.jpg" alt=""></a></li>
+      <li><a href="#"><img src="素材/ddd.jpg" alt=""></a></li>
+      <li><a href="#"><img src="素材/eee.jpg" alt=""></a></li>
+    </ul>
+  </div>
+  <div class="btns">
+    <span class="left"></span>
+    <span class="right"></span>
+  </div>
+  <div class="circles">
+    <ul>
+      <li class="select"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
+<script>
+  let imgLis = document.querySelectorAll('.imgs li');
+  let circlesLis = document.querySelectorAll('.circles li');
+  let btnLeft = document.querySelector('.left');
+  let btnRight = document.querySelector('.right');
+
+  var ids = 0;
+  var timer;
+
+  btnLeft.onclick = function () {
+    ids--;
+    changeImg();
+    clearInterval(timer);
+    setTimeout(function () {
+      autoPlay()
+    },2000)
+  };
+
+  btnRight.onclick = function () {
+    ids++;
+    changeImg();
+    clearInterval(timer);
+    setTimeout(function () {
+      autoPlay()
+    },2000)
+  };
+
+  for (var j = 0; j < circlesLis.length; j++) {
+    circlesLis[j].index = j;
+    circlesLis[j].onmouseover = function () {
+      ids = this.index;
+      console.log(this.index);
+      clearInterval(timer);
+      changeImg();
+    };
+    circlesLis[j].onmouseleave = function () {
+      autoPlay()
+    }
+  }
+
+  function autoPlay() {
+    timer = setInterval(function () {
+      ids++;
+      changeImg()
+    },2000)
+  }
+
+  autoPlay();
+
+  function changeImg() {
+    if (ids < 0) {
+      ids = 4
+    }
+    if (ids > 4) {
+      ids = 0
+    }
+    for (var i = 0; i < imgLis.length; i++) {
+      imgLis[i].className = '';
+      circlesLis[i].className = '';
+    }
+    imgLis[ids].className = 'select';
+    circlesLis[ids].className = 'select';
+  }
+
+</script>
+</body>
+</html>

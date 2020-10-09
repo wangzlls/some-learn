@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 79px;
+            height: 108px;
+            position: absolute;
+            left: 100px;
+            /*border: 1px solid red;*/
+            top: 100px;
+            /*0 和 -216px是图片的坐标，左上角顶点是(0,0)，所以值为负*/
+            background: url("素材/girl.png") no-repeat 0 -216px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    var box = document.querySelector('.box');
+    //标记第几张图片，第一张为0，一共有7张图片。
+    var ids = 0;
+    var tempLeft = 100;
+    var timer = setInterval(function () {
+        tempLeft += 5;
+        if (tempLeft > 1000) {
+            clearInterval(timer)
+        }
+        box.style.left = tempLeft + 'px';
+        ids++;
+        if (ids > 7) {
+            ids = 0;
+        }
+        //标记下一张出现的图片，只是x轴改变，y轴不变。
+        box.style.backgroundPosition = -79 * ids + 'px -216px'
+    }, 50)
+
+
+</script>
+</body>
+</html>

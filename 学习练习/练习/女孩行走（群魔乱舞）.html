@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>女孩行走（群魔乱舞）</title>
+    <style>
+        div {
+            width: 79px;
+            height: 108px;
+            position: absolute;
+            /*border: 1px solid red;*/
+            background: url("素材/girl.png") no-repeat 0 -216px;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    //使用构造函数创建小女孩行走
+    function Girl(left, top) {
+        this.left = left;
+        this.top = top;
+        //产生小女孩
+        this.init = function () {
+            this.div = document.createElement('div');
+            this.div.style.left = this.left + 'px';
+            this.div.style.top = this.top + 'px';
+            document.body.appendChild(this.div);
+
+        };
+        //小女孩行走
+        this.move = function () {
+            var ids = 0;
+            var that = this;
+            this.timer = setInterval(function () {
+                that.left += 5;
+                that.div.style.left = that.left + 'px';
+                if (that.left > 1000) {
+                    that.die()
+                }
+                if (ids > 7) {
+                    ids = 0;
+                }
+                //改变图片
+                that.div.style.backgroundPosition = -79 * ids + 'px -216px';
+                ids++;
+            }, 50)
+
+        };
+        //小女孩消失
+        this.die = function () {
+            clearInterval(this.timer);
+            this.div.style.display = 'none';
+        };
+        this.init();
+        this.move();
+    }
+    //创建随机小女孩
+    setInterval(function () {
+        new Girl(Math.floor(Math.random()*(200-100+1)+100),Math.floor(Math.random()*(600-100+1)+100));
+    },500);
+    // console.log(this);
+    // console.log(this.left)
+
+</script>
+</body>
+</html>

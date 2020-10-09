@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>表单注册</title>
+    <style>
+        .box {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .redBorder {
+            border: 2px solid red;
+        }
+
+        .redSpan {
+            color: red;
+        }
+
+        .greenBorder {
+            border: 2px solid green;
+        }
+
+        .greenSpan {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <p><span>电话：</span><input type="text" class="telInput">&nbsp;<span class="tel2"></span><br></p>
+    <p><span>密码：</span><input type="text" class="pswInput">&nbsp;<span class="psw2"></span><br></p>
+    <p>
+        <button class="btn" disabled="disabled">提交</button>
+    </p>
+</div>
+<script>
+    var telInput = document.querySelector('.telInput');
+    var pswInput = document.querySelector('.pswInput');
+
+    var tel2 = document.querySelector('.tel2');
+    var psw2 = document.querySelector('.psw2');
+
+    var btn = document.querySelector('.btn');
+
+    telInput.onblur = function () {
+        //当输入位数为11位时显示正确
+        if (telInput.value.length == 11) {
+            //当输入正确时，边框变颜色
+            telInput.setAttribute('class', 'greenBorder');
+            tel2.innerHTML = '输入正确';
+            tel2.setAttribute('class', 'greenSpan');
+            check();
+        } else {
+            tel2.innerHTML = '输入错误';
+            telInput.setAttribute('class', 'redBorder');
+            tel2.setAttribute('class', 'redSpan');
+            check();
+        }
+    };
+    pswInput.onblur = function () {
+        //当输入位数为2-7位时显示正确
+        if (pswInput.value.length >= 2 && pswInput.value.length <= 7) {
+            //当输入正确时，边框变颜色
+            pswInput.className = 'greenBorder';
+            psw2.innerHTML = '输入正确';
+            psw2.className = 'greenSpan';
+            check();
+        } else {
+            psw2.innerHTML = '输入错误';
+            pswInput.className = 'redBorder';
+            psw2.className = 'redSpan';
+            check();
+        }
+    };
+
+    function check() {
+        if (tel2.innerHTML == '输入正确' && tel2.innerHTML == '输入正确') {
+            btn.removeAttribute('disabled');
+        } else {
+            btn.setAttribute('disabled', 'disabled');
+        }
+    }
+
+</script>
+</body>
+</html>

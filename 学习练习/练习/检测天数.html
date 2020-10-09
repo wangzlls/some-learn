@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--输入年份和月数，判断输出到该月有多少天-->
+<script>
+    // var year = parseInt(prompt('请输入一个年份：'));
+    // var month = parseInt(prompt('请输入一个月份：'));
+    // var sum = 0;
+    // for (var i = 1; i <= month; i++) {
+    //     var day = 0;
+    //     switch (i) {
+    //         case 1:
+    //         case 3:
+    //         case 5:
+    //         case 7:
+    //         case 8:
+    //         case 10:
+    //         case 12:
+    //             console.log(31);
+    //             day = 31;
+    //             break;
+    //         case 4:
+    //         case 6:
+    //         case 9:
+    //         case 11:
+    //             console.log(30);
+    //             day = 31;
+    //             break;
+    //         case 2:
+    //             if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+    //                 console.log(29);
+    //                 day = 29;
+    //             } else {
+    //                 console.log(28);
+    //                 day = 28;
+    //             }
+    //     }
+    //     sum = day + sum;
+    // }
+
+    // 输出1到二百以内的数字，能被三整除的后面加foo，能被5整除的biz，能被7整除的后面加baz。
+    // var num = parseInt(prompt('请输入一个数字：'));
+    // for (var i = 1; i <= num; i++) {
+    //     if (i % 3 == 0 && i % 5 == 0 && i % 7 == 0) {
+    //         console.log(i + '  foo biz baz');
+    //     } else if (i % 5 == 0 && i % 7 == 0) {
+    //         console.log(i + '  biz baz');
+    //     } else if (i % 3 == 0 && i % 5 == 0) {
+    //         console.log(i + '  foo biz');
+    //     } else if (i % 7 == 0) {
+    //         console.log(i + '  baz');
+    //     } else if (i % 5 == 0) {
+    //         console.log(i + '  biz');
+    //     } else if (i % 3 == 0) {
+    //         console.log(i + '  foo');
+    //     } else console.log(i)
+    // }
+
+
+
+    // 随机数：
+    var num = Math.pow(2, 5);
+    console.log(num);
+    var num1 = Math.sqrt(16);
+    console.log(num1);
+    // 输出整数随机数的公式：parseInt(Math.random() * (n - m + 1) * m)
+    // 其中n：较大的数
+    // m：较小的数
+    // 输出11到33的随机数：
+    for (var i = 0; i < 1000; i++) {
+        var suiji = Math.floor(Math.random() * (33 - 11) + 11);
+        console.log(suiji)
+    }
+
+
+</script>
+</body>
+</html>

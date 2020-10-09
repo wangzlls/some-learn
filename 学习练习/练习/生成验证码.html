@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>生成验证码</title>
+</head>
+<body>
+<p>以下生成字符串</p>
+<div id="div2" style="width: 50px;height: 20px;border: solid 1px red ;margin: 10px"></div>
+<div id="btn" onclick="btnonclik()">
+    <button>生成验证码</button>
+</div>
+
+<script>
+    //1.准备字符串
+    var zifu = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    function creatRandomNum(max, min) {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    //3.生成4（5，6，7，8）位长度的随机数
+    function ma() {
+        var yanzhengma = '';
+        for (var i = 0; i < 4; i++) {
+            //2.生成随机数
+            var suijishu = creatRandomNum(0, zifu.length - 1);
+            yanzhengma += zifu[suijishu];
+        }
+        console.log(yanzhengma);
+        return yanzhengma;
+    }
+
+    //4.获取相应的字符
+    // console.log(yanzhengma);
+    // var btnInput = document.getElementById('btn');
+    // var div2Input = document.getElementById('div2');
+    // var yanzhengma2 = yanzhengma;
+
+    function btnonclik() {
+        var yanzhengma2 = ma();
+        // console.log(yanzhengma2);
+        div2.innerText = yanzhengma2;
+    }
+
+
+</script>
+</body>
+</html>

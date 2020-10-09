@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>年终奖</title>
+    <style>
+        .div1 {
+            width: 350px;
+            /*margin: 0 auto;*/
+            border: 1px solid red;
+            text-align: center;
+        }
+
+        .div2 {
+            width: 350px;
+            margin: 20px 0;
+            /*border: 1px solid red;*/
+            text-align: center;
+        }
+
+        .div3 {
+            width: 350px;
+            margin: 20px 0;
+            border: 1px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--某个公司要给员工发年终奖，为了奖励老员工，所以工作时间越长，发的越多，规则如下：-->
+<!--工作满0年     发月薪的1倍月薪年终奖，如果月薪大于8000，那么就是发1.2倍-->
+<!--工作满1年     发月薪的1.5倍月薪年终奖，如果月薪大于10000，那么就是发1.7倍-->
+<!--工作满2年， 甚至更多 发月薪的3倍月薪年终奖，如果月薪大于12000，那么就是发3.2倍-->
+<!--用JS编写程序，让用户输入工作了几年，可以输入0，然后输入月薪。然后算年终奖。-->
+<div class="div1">
+    <span id="work_years">输入工作年数：</span><input type="text" id="years"><br>
+    <span id="mon_dol">输入工作月薪：</span><input type="text" id="dol">
+</div>
+<div class="div2">
+    <button class="btn" id="jisuan">计算</button>
+</div>
+<div class="div3">
+    <span id="all">应所得年薪为：</span><input type="text" id="year_all">
+</div>
+<script>
+    var yearsInput = document.getElementById('years');
+    var mondolInput = document.getElementById('dol');
+    var allMon = document.getElementById('year_all');
+    var btn = document.getElementById('jisuan');
+
+    btn.onclick = function () {
+        var years = parseInt(yearsInput.value);
+        var mondol = parseInt(mondolInput.value);
+
+        //     if (years === 0) {
+        //         allMon.value = mondol;
+        //         if (mondol > 8000) {
+        //             allMon.value = mondol * 1.2;
+        //         }
+        //     } else if (years === 1) {
+        //         allMon.value = mondol * 1.5;
+        //         if (mondol > 10000) {
+        //             allMon.value = mondol * 1.7;
+        //         }
+        //     } else if (years >= 2) {
+        //         allMon.value = mondol * 3;
+        //         if (mondol > 12000) {
+        //             allMon.value = mondol * 3.2
+        //         }
+        //     }
+        // };
+
+        if (years === 0) {
+            allMon.value = mondol >= 8000 ? mondol * 1.2 : mondol;
+        } else if (years === 1) {
+            allMon.value = mondol >= 10000 ? mondol * 1.7 : mondol * 1.5;
+        } else if (years >= 2) {
+            allMon.value = mondol >= 12000 ? mondol * 3.2 : mondol * 3;
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

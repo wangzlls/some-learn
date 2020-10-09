@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 给20块钱买可乐，每瓶可乐3块钱，喝完之后退瓶子可以换回1块钱，问最多可以喝到多少瓶可乐？
+    var mon = parseInt(prompt('请输入钱数：'));
+    var danjia = 3;
+    var count = 0;
+    var last = 0;
+    while (mon>=danjia) {
+        last = mon-3;
+        count++;
+        mon = last+1
+    }
+    console.log(count);
+</script>
+</body>
+</html>

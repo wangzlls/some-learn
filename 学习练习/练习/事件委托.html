@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<ul class="abc">
+    <li>你好</li>
+    <li>我好</li>
+    <li>大家好</li>
+    <li>才是真的好</li>
+</ul>
+
+<!--事件委托/事件代理：事件委托就是利用【事件冒泡】，只指定一个事件处理程序，就可以管理某一类型的所有事件。-->
+
+<script>
+    var ul = document.getElementsByClassName('abc');
+
+    ul.onmouseover = function (event) {
+        var event = event||window.event;
+        event.target.style.backgroundColor = 'yellow'
+    };
+    ul.onmouseout = function (event) {
+        var event = event||window.event;
+        event.target.style.backgroundColor = 'orange'
+
+    };
+
+
+
+
+
+</script>
+</body>
+</html>

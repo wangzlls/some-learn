@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>演示调用</title>
+
+</head>
+<body>
+
+<script>
+    var regExp = new RegExp('abc','gi');
+    var str = '12abc12abABC';
+    var result = regExp.exec(str);
+    console.log(result);
+    if(result.index == 0){
+        console.log('该段文字并不是以abc开头');
+    }else{
+        console.log('该段文字是以abc开头');
+    }
+
+
+
+</script>
+</body>
+</html>

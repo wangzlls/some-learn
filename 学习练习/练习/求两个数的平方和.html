@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>求俩数的平方和</title>
+</head>
+<body>
+<script>
+    function getPingFangHe(a, b) {
+        var sum = getPingFang(a) + getPingFang(b);
+        return sum;
+
+        //求平方
+        function getPingFang(num) {
+
+            return num * num;
+        }
+    }
+
+    // getPingFang(10);
+
+    var result = getPingFangHe(10, 20);
+    console.log(result);
+
+
+</script>
+</body>
+</html>

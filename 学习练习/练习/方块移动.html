@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>方块移动</title>
+    <style>
+        .big {
+            width: 600px;
+            height: 500px;
+            /*background-color: lightpink;*/
+            border: 1px solid black;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        .small {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            position: absolute;
+            top: 200px;
+            left: 250px;
+        }
+    </style>
+</head>
+<body>
+<div class="big">
+    <div class="small">
+
+    </div>
+</div>
+<script>
+    var big = document.querySelector('.big');
+    var small = document.querySelector('.small');
+    var delX = 0;
+    var delY = 0;
+    var flage = false;
+    small.onmousedown = function () {
+        flage = true;
+        delX = event.clientX - small.offsetLeft;
+        delY = event.clientY - small.offsetTop;
+        console.log('x->' + delX, 'y->' + delY);
+        console.log('clientX->'+event.clientX,'clientY'+event.clientY);
+        console.log('offsetLeft->'+small.offsetLeft,'offsetTop->'+small.offsetTop)
+    };
+    document.onmousemove = function () {
+        if (flage) {
+            //clientWidth = width+左右padding
+            //clientHeigh = height + 上下padding
+            //clientTop = boder.top(上边框的宽度)
+            // clientLeft = boder.left(左边框的宽度)
+            //offsetWidth = width + 左右padding + 左右boder
+            //offsetHeith = height + 上下padding + 上下boder
+            //offsetTop：当前元素 上边框 外边缘到最近的已定位父级（offsetParent） 上边框内边缘的距离。如果父级都没有定位，则分别是到body 顶部和左边的距离
+            //offsetLeft：当前元素 左边框 外边缘到最近的已定位父级（offsetParent） 左边框内边缘的距离。如果父级都没有定位，则分别是到body 顶部和左边的距离
+            var tempLeft = event.clientX - delX;
+            var tempTop = event.clientY - delY;
+            if (tempLeft < 5) {
+                tempLeft = 0;
+            }
+            if (tempLeft > big.clientWidth - small.clientWidth) {
+                tempLeft = big.clientWidth - small.clientWidth
+            }
+            //此时如何设置tempTop<30，即可出现磁条效果
+            if (tempTop < 5) {
+                tempTop = 0;
+            }
+            if (tempTop > big.clientHeight - small.clientHeight) {
+                tempTop = big.clientHeight - small.clientHeight
+            }
+            small.style.left = tempLeft + 'px';
+            small.style.top = tempTop + 'px';
+            console.log('big.clientWidth->' + big.clientWidth, 'small.clientWidth-->' + small.clientWidth);
+            console.log('big.clientHeight->' + big.clientHeight, 'small.clientHeight-->' + small.clientHeight);
+        }
+    };
+    document.onmouseup = function () {
+        flage = false
+    };
+
+
+</script>
+</body>
+</html>

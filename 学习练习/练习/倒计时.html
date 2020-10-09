@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            border: 1px solid skyblue;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="./素材/psb.jpg" alt="">
+
+    <h3>商品：忘忧丹</h3>
+
+    <p>结束时间是：2021-7-31</p>
+
+    <p>
+        <span>原价</span>
+        <del>￥9999</del>
+        <span>现价：</span><span>￥99</span>
+    </p>
+    <p>距离秒杀开始还剩：<span class="endTime"></span></p>
+</div>
+<script>
+    var endDateP = document.querySelector('p');
+    // console.log(endDateP)
+    var showSpan = document.querySelector('.endTime');
+    // innerHtml 如果不写信息就是获取标签对应的内容
+    // console.log(endDateP, endDateP.value, endDateP.innerHTML);
+
+    var endDateStr = endDateP.innerHTML;
+    // console.log(endDateStr);
+    var arr = endDateStr.split('：');
+    // console.log(arr);
+    //通过传参的方式创建Date
+    var endDate = new Date(arr[1]);
+    console.log(endDate);
+
+    var toDay = new Date();
+    console.log(toDay);
+    //获取当前时间距离结束时间所有的秒数
+    var totalSenconds = (endDate - toDay) / 1000;
+
+    var day = 0;
+    var hour = 0;
+    var minutes = 0;
+    var seconds = 0;
+
+    var timer = setInterval(function () {
+        //当时间充足 更改时间
+        if (totalSenconds > 0) {
+            day = Math.floor(totalSenconds / 60 / 60 / 24);
+            hour = Math.floor(totalSenconds / 60 / 60) - day * 24;
+            minutes = Math.floor(totalSenconds / 60) - day * 24 * 60 - hour * 60;
+            seconds = Math.floor(totalSenconds) - day * 24 * 60 * 60 - hour * 60 * 60 - minutes * 60;
+            showSpan.innerHTML = day + ' 天 ' + hour + ' 小时 ' + minutes + ' 分钟 ' + seconds + ' 秒';
+            totalSenconds--;
+        } else {
+            //当时间到达结束时间 结束定时器
+            clearInterval(timer);
+            showSpan.innerHTML = '秒杀开始！';
+        }
+    }, 1000)
+</script>
+</body>
+</html>

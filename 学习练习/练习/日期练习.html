@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>日期练习</title>
+</head>
+<body>
+<script>
+
+
+    var d = new Date();
+    console.log(d.getMonth() + 1);  //从零开始返回月份，所以后面+1
+    console.log(d.getDate());     //返回几号
+    console.log(d.getDay());    //返回这是一周中的第几天
+    console.log(d.getDay());      //返回星期几
+    console.log(d.getFullYear());   //返回完整年份
+    console.log(d.getHours());     //返回当前小时
+    console.log(d.getMilliseconds());   //返回当前毫秒
+    console.log(d.getMinutes());    //返回当前分钟
+    console.log(d.getSeconds());    //返回当前秒
+    console.log(d.getTime());       //返回从 1970 年 1 月 1 日至今的毫秒数。
+    //  输入日期 转化为2020-07-08   其他正常显示
+    console.log('--------------------------');
+    var str = prompt('输入一个日期：', '2020-1-1');
+    var date = new Date(str);
+    console.log(date);
+    //获取年份
+    var year = date.getFullYear();
+    //获取月份
+    var month = date.getMonth() + 1;
+    if (month <= 9) {
+        month = '0' + month
+    }
+    //获取日期
+    var day = date.getDate();
+    if (day <= 9) {
+        day = '0' + day
+    }
+    console.log(year + '-' + month + '-' + day);
+    console.log('--------------------------');
+    //三目运算写：
+    var result = date.getFullYear() + '-' + (date.getMonth() + 1 > 10 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) + '-' + (date.getDate() > 10 ? date.getDate() : '0' + date.getDate());
+    console.log(result);
+
+
+    console.log('--------------------------');
+    //  从出生到现在有多少天
+    var d1 = new Date('1998-11-26');
+    var d2 = new Date('2020-7-20');
+    console.log(d1);
+    console.log(d2);
+    console.log(Math.floor((d2 - d1) / 1000 / 60 / 60 / 24 / 365))
+
+
+</script>
+</body>
+</html>

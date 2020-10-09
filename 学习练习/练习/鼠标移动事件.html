@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移动事件</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightpink;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    /**
+     鼠标单击是触发：click
+     鼠标双击是触发：dblclick
+     鼠标按下时触发：mousedown
+     鼠标抬起时触发：mouseup
+     鼠标移动时触发：mousemove
+     鼠标移入时触发(不冒泡)： mouseenter
+     鼠标移出时触发(不冒泡)： mouseleave
+     鼠标移入时触发(冒泡)： mouseover
+     鼠标移出时触发(冒泡)： mouseout
+     */
+
+    // div1.onclick = function () {
+    //     console.log('我被点击了。')
+    // };
+    //
+    // div1.ondblclick = function () {
+    //     console.log('我被点击了。')
+    // };
+    //
+    // div1.onmousedown = function () {
+    //     console.log('我被按下了。')
+    // };
+    //
+    // div1.onmouseup = function () {
+    //     console.log('我被抬起了。')
+    // };
+    //
+    // div1.onmousemove = function () {
+    //     console.log('我被移动了。')
+    // };
+    //
+    // div1.onmouseenter = function () {
+    //     console.log('我进入了。')
+    // };
+    //
+    // div1.onmouseleave = function () {
+    //     console.log('我出去了。')
+    // };
+
+
+    var div1 = document.getElementsByClassName('box');
+    console.log(div1);
+    var flag = false;
+    var delX = 0;
+    var delY = 0;
+    div1.onmousedown = function () {
+        delX = event.clientX - div1.offsetLeft;
+        delY = event.clientY - div1.offsetTop;
+        flag = true;
+    };
+    document.onmousemove = function () {
+        if (flag) {
+            var tempLeft = event.clientX;
+            var tempTop = event.clientY;
+            div1.style.left = tempLeft - delX + 'px';
+            div1.style.top = tempTop - delY + 'px';
+            console.log(tempLeft, tempTop)
+        }
+    };
+    document.onmouseup = function () {
+        flag = false
+    };
+
+
+    // var div1 = document.querySelector('.div1');
+    // //设置开关判断能否移动
+    // var flag = false;
+    // //将要减去的变量声明为全局变量
+    // var delX = 0;
+    // var delY = 0;
+    // //div设置鼠标按下的监听
+    // div1.onmousedown = function () {
+    //     //获取鼠标距离div左侧边框的距离
+    //     delX = event.clientX - div1.offsetLeft;
+    //     delY = event.clientY - div1.offsetTop;
+    //     flag = true;
+    // };
+    // //div设置移动事件
+    // document.onmousemove = function () {
+    //     if (flag) {
+    //         var tempLeft = event.clientX;
+    //         var tempTop = event.clientY;
+    //         div1.style.left = tempLeft - delX + 'px';
+    //         div1.style.top = tempTop - delY + 'px';
+    //         console.log('delX : ' + delX, 'left: ' + div1.style.left, 'tempLeft: ' + tempLeft);
+    //     }
+    // };
+    // //div设置鼠标离开事件
+    // document.onmouseup = function () {
+    //     flag = false;
+    // }
+
+</script>
+</body>
+</html>

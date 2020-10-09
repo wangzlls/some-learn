@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串的加密和解密练习</title>
+</head>
+<body>
+<script>
+    var str = 'wangzlls';
+    var result = btoa(str);
+    console.log(result);
+
+
+    var str1 = 'wangzlls,王者来老杀';
+    var JiaMi = encodeURI(str1);
+    var result1 = btoa(JiaMi);
+    console.log(result1);
+
+    var JieMi = atob(result1);
+    var result2 = decodeURI(JieMi);
+    console.log(result2)
+
+</script>
+</body>
+</html>
